@@ -134,6 +134,7 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -149,6 +150,38 @@
             color: var(--accent-yellow);
         }
 
+        /* Footer Login Buttons Container */
+        .bottom-login-container {
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-login-btn {
+            background: transparent;
+            border: 1px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            padding: 8px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-login-btn:hover {
+            background-color: var(--accent-yellow);
+            color: #000;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -156,6 +189,202 @@
             color: var(--text-white);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        /* Modal / Popup Styling (Algemeen & Inloggen) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid var(--border-gray);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+            background-color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        /* Welkomst Promo Popup Specifieke Styling */
+        .promo-modal-card {
+            background-color: var(--bg-card);
+            border: 3px solid var(--accent-yellow);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            padding: 12px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+            text-align: center;
+            animation: popIn 0.3s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .promo-img {
+            width: 100%;
+            max-height: 82vh;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            background-color: #000;
+            border: 1px solid var(--border-gray);
+            border-radius: 4px;
+            color: var(--text-white);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .login-input:focus {
+            border-color: var(--accent-yellow);
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .remember-me input {
+            accent-color: var(--accent-yellow);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .login-btn-submit {
+            background-color: var(--accent-yellow);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+
+        .login-btn-submit:hover {
+            background-color: #e6b800;
+        }
+
+        .btn-logout {
+            background-color: transparent;
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .btn-logout:hover {
+            background-color: var(--accent-red);
+            color: #fff;
+        }
+
+        .error-msg {
+            color: var(--accent-red);
+            font-size: 0.9rem;
+            display: none;
+            font-weight: bold;
+        }
+
+        .optional-dates-list {
+            list-style: none;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .optional-date-item {
+            background-color: #000;
+            border-left: 4px solid var(--accent-yellow);
+            padding: 12px 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .optional-date-item strong {
+            color: var(--accent-yellow);
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .optional-date-item span {
+            color: var(--text-white);
+            font-size: 0.95rem;
         }
 
         /* Banner Header */
@@ -257,12 +486,18 @@
         .social-card.songkick:hover i { color: #f80046; }
         .social-card.merch:hover i { color: #e63946; }
 
-        /* Media Grid Layout: Video + Photo Slider side-by-side */
+        /* Media Grid Layout: Multi-Video + Photo Slider */
         .media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            align-items: stretch;
+            align-items: start;
+        }
+
+        .videos-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         /* Embedded YouTube Video */
@@ -270,7 +505,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 75%;
+            padding-bottom: 56.25%;
             overflow: hidden;
             border-radius: 8px;
             border: 3px solid var(--border-gray);
@@ -292,7 +527,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 75%;
+            padding-bottom: 118%;
             overflow: hidden;
             border-radius: 8px;
             border: 3px solid var(--border-gray);
@@ -307,11 +542,14 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-wrap: nowrap;
             transition: transform 0.5s ease-in-out;
+            will-change: transform;
         }
 
         .slide {
-            min-width: 100%;
+            flex: 0 0 100%;
+            width: 100%;
             height: 100%;
             position: relative;
         }
@@ -636,6 +874,16 @@
             color: #000;
         }
 
+        .no-shows-msg {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-gray);
+        }
+
         .merch-image-section {
             text-align: center;
             margin-top: 50px;
@@ -782,8 +1030,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .video-container, .photo-slider {
-                padding-bottom: 56.25%;
+            .photo-slider {
+                padding-bottom: 75%;
             }
 
             .news-card {
@@ -831,10 +1079,37 @@
                 width: 100%;
                 text-align: center;
             }
+
+            .bottom-login-container {
+                flex-direction: column;
+            }
+
+            .nav-login-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1D0PSN8EL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-B1D0PSN8EL');
+    </script>
 </head>
 <body>
+
+    <!-- Welkomst Promo Popup bij openen website -->
+    <div class="modal-overlay" id="welcomePromoModal">
+        <div class="promo-modal-card">
+            <button type="button" class="modal-close" onclick="closeWelcomeModal()">&times;</button>
+            <img id="promoImg" src="goudsskaas.jpg" alt="SKIPPABEAT Promo" class="promo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500/161616/ffcc00?text=SKIPPABEAT+LIVE';">
+        </div>
+    </div>
 
     <!-- Ska Checkerboard Header Accent -->
     <div class="ska-checkerboard"></div>
@@ -850,22 +1125,22 @@
                 
                 <!-- Language Switcher -->
                 <div class="lang-switch">
-                    <button class="lang-btn active" id="btn-nl" onclick="setLanguage('nl')" title="Nederlands" aria-label="Nederlands">
+                    <button type="button" class="lang-btn active" id="btn-nl" onclick="setLanguage('nl')" title="Nederlands" aria-label="Nederlands">
                         <img src="https://flagcdn.com/w40/nl.png" alt="Nederlands" class="flag-icon">
                     </button>
-                    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')" title="English" aria-label="English">
+                    <button type="button" class="lang-btn" id="btn-en" onclick="setLanguage('en')" title="English" aria-label="English">
                         <img src="https://flagcdn.com/w40/gb.png" alt="English" class="flag-icon">
                     </button>
-                    <button class="lang-btn" id="btn-fr" onclick="setLanguage('fr')" title="Français" aria-label="Français">
+                    <button type="button" class="lang-btn" id="btn-fr" onclick="setLanguage('fr')" title="Français" aria-label="Français">
                         <img src="https://flagcdn.com/w40/fr.png" alt="Français" class="flag-icon">
                     </button>
-                    <button class="lang-btn" id="btn-de" onclick="setLanguage('de')" title="Deutsch" aria-label="Deutsch">
+                    <button type="button" class="lang-btn" id="btn-de" onclick="setLanguage('de')" title="Deutsch" aria-label="Deutsch">
                         <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="flag-icon">
                     </button>
                 </div>
             </div>
 
-            <button class="mobile-menu-btn" id="menuToggle" aria-label="Menu">
+            <button type="button" class="mobile-menu-btn" id="menuToggle" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
@@ -881,6 +1156,75 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Modal Popup voor Inloggen & Optionele Speeldata -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-card">
+            <button type="button" class="modal-close" onclick="closeLoginModal()">&times;</button>
+            
+            <!-- Inlog formulier scherm -->
+            <div id="loginSection">
+                <h3 class="modal-title"><i class="fas fa-lock"></i> Band Inlog</h3>
+                <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem; font-weight: bold;">
+                    Members only
+                </p>
+                <form class="login-form" onsubmit="handleLogin(event)">
+                    <input type="password" id="passwordInput" class="login-input" placeholder="Wachtwoord..." required>
+                    
+                    <!-- Onthoud mij vinkje -->
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe"> Onthoud mij op dit apparaat
+                    </label>
+
+                    <p class="error-msg" id="errorMsg">Onjuist wachtwoord! Probeer opnieuw.</p>
+                    <button type="submit" class="login-btn-submit">Bekijken</button>
+                </form>
+            </div>
+
+            <!-- Resultaat scherm (optionele speeldata) -->
+            <div id="datesSection" style="display: none;">
+                <h3 class="modal-title"><i class="fas fa-calendar-alt"></i> Optionele Speeldata</h3>
+                <ul class="optional-dates-list">
+                    <li class="optional-date-item">
+                        <strong>Za 15 mei</strong>
+                        <span>Rock on the Kiosk, Phillipine <small style="color: var(--text-muted);">(waarschijnlijk niet)</small></span>
+                    </li>
+                    <li class="optional-date-item">
+                        <strong>Zo 16 mei</strong>
+                        <span>Skatinee Festival Kalmthout</span>
+                    </li>
+                    <li class="optional-date-item">
+                        <strong>Zo 26 sep 2027</strong>
+                        <span>Café Parkzicht, Breda</span>
+                    </li>
+                </ul>
+                <button type="button" class="btn-logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Uitloggen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup voor Rider & Stageplan -->
+    <div class="modal-overlay" id="riderModal">
+        <div class="modal-card">
+            <button type="button" class="modal-close" onclick="closeRiderModal()">&times;</button>
+            <div id="riderSection">
+                <h3 class="modal-title"><i class="fas fa-sliders-h"></i> Band Rider & Stageplan</h3>
+                <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem; font-weight: bold;">
+                    Voer het wachtwoord in voor de technische specificaties.
+                </p>
+                <form class="login-form" onsubmit="handleRiderLogin(event)">
+                    <input type="password" id="riderPasswordInput" class="login-input" placeholder="Wachtwoord..." required>
+                    
+                    <label class="remember-me">
+                        <input type="checkbox" id="riderRememberMe"> Onthoud mij op dit apparaat
+                    </label>
+
+                    <p class="error-msg" id="riderErrorMsg">Onjuist wachtwoord! Probeer opnieuw.</p>
+                    <button type="submit" class="login-btn-submit">Open Rider</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Top Banner Image -->
     <div class="banner-container" id="home">
@@ -917,13 +1261,20 @@
             </div>
         </section>
 
-        <!-- Media Section: YouTube Video & Photo Slider Side-by-Side -->
+        <!-- Media Section: YouTube Videos & Photo Slider Side-by-Side -->
         <section id="media">
             <h2 class="section-title" data-i18n="section-media">Video & Foto's</h2>
             <div class="media-grid">
-                <!-- Video Left -->
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/Vga_2ITu6IU" title="SKIPPABEAT - Promo Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- Videos Left Column -->
+                <div class="videos-column">
+                    <!-- Nieuwe Video (Goudse Skaas 2026) -->
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/3ujJyYbPj2A" title="SKIPPABEAT op Goudse Skaas 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Bestaande Promo Video -->
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Vga_2ITu6IU" title="SKIPPABEAT - Promo Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- Photo Slider Right -->
@@ -938,31 +1289,36 @@
                         <div class="slide"><img src="skip7.JPG" alt="Skippabeat Foto 7"></div>
                         <div class="slide"><img src="skip8.jpg" alt="Skippabeat Foto 8"></div>
                     </div>
-                    <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Vorige foto"><i class="fas fa-chevron-left"></i></button>
-                    <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Volgende foto"><i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Vorige foto"><i class="fas fa-chevron-left"></i></button>
+                    <button type="button" class="slider-btn next" onclick="moveSlide(1)" aria-label="Volgende foto"><i class="fas fa-chevron-right"></i></button>
                     <div class="slider-dots" id="sliderDots"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Live Agenda / Tour Section -->
+        <!-- Live Agenda / Tour Section (Dynamisch met automatische datumfiltering) -->
         <section id="agenda">
             <h2 class="section-title" data-i18n="section-agenda">Live Agenda</h2>
-            <div class="agenda-list">
-                <div class="agenda-item">
+            <div class="agenda-list" id="agendaList">
+                <!-- Show 1: 13 Nov 2026 -->
+                <div class="agenda-item" data-date="2026-11-13">
                     <div class="agenda-date">
-                        <span class="day">10</span>
-                        <span class="month" data-i18n="month-oct">OKT 2026</span>
+                        <span class="day">13</span>
+                        <span class="month" data-i18n="month-nov">NOV 2026</span>
                     </div>
                     <div class="agenda-details">
-                        <h3>GoudSKAfestival</h3>
-                        <p><i class="fas fa-map-marker-alt" style="color: var(--accent-red);"></i> Gouda, NL — Studio Gonz</p>
+                        <h3>SKIPPABEAT + Skankin' Rebels</h3>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--accent-red);"></i> Breda, NL — Crafft</p>
+                        <p style="font-size: 0.85rem; color: var(--accent-yellow); margin-top: 2px;">
+                            <i class="far fa-clock"></i> Aanvang 21:00 | Support: Skankin' Rebels
+                        </p>
                     </div>
                     <div class="agenda-action">
-                        <a href="https://www.songkick.com/artists/8661379-skippabeat" target="_blank" class="btn-ticket" data-i18n="btn-tickets">Tickets & Info</a>
+                        <a href="https://crafftbreda.nl/" target="_blank" rel="noopener noreferrer" class="btn-ticket" data-i18n="btn-free-info">Gratis Entree & Info</a>
                     </div>
                 </div>
             </div>
+            
             <p style="text-align: center; margin-top: 20px; font-size: 0.95rem; color: var(--text-muted);" data-i18n="agenda-footer">
                 Blijf op de hoogte van nieuwe showbekendmakingen via <a href="https://www.songkick.com/artists/8661379-skippabeat" target="_blank" style="color: var(--accent-yellow);">Songkick</a> en onze socials!
             </p>
@@ -984,6 +1340,14 @@
             </div>
             <div class="news-slider-container">
                 <div class="news-grid">
+                    <!-- Nieuwst Bericht: Oktober 2026 -->
+                    <div class="news-card">
+                        <div>
+                            <div class="news-date" data-i18n="news-0-date">Oktober 2026</div>
+                            <h3 data-i18n="news-0-title">Feest met de nieuwe bezetting!</h3>
+                            <p data-i18n="news-0-text">Onze vernieuwde bezetting heeft op 10 oktober een vliegende start gemaakt: het optreden op Gouds Skaas in Gouda werd één groot feest.<br><br>Smaakt dit naar meer? Op 13 november staat de band in CRAFFT Breda, met Skankin' Rebels als voorprogramma. Zorg dat je erbij bent!</p>
+                        </div>
+                    </div>
                     <!-- Bericht 1: September 2026 -->
                     <div class="news-card">
                         <div>
@@ -1102,6 +1466,16 @@
             </div>
         </section>
 
+        <!-- Inlogknoppen helemaal onderaan onder Contact -->
+        <div class="bottom-login-container">
+            <button type="button" class="nav-login-btn" onclick="openLoginModal()" title="Inloggen voor optionele data">
+                <i class="fas fa-lock"></i> Inlog Band
+            </button>
+            <button type="button" class="nav-login-btn" onclick="openRiderModal()" title="Band Rider & Stageplan bekijken">
+                <i class="fas fa-sliders-h"></i> Band Rider & Stageplan
+            </button>
+        </div>
+
     </div>
 
     <!-- Ska Checkerboard Divider -->
@@ -1115,69 +1489,48 @@
 
     <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        const RIDER_URL = "https://skippabeat.github.io/SKIPPABEAT/rider_skippabeat.html";
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Welkomst Promo Modal Functie (Slechts 1x per sessie + sluit automatisch na 5s)
+        let welcomeTimer;
+
+        function closeWelcomeModal() {
+            const modal = document.getElementById('welcomePromoModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            if (welcomeTimer) {
+                clearTimeout(welcomeTimer);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const promoImg = document.getElementById('promoImg');
+            const today = new Date();
+            const switchDate = new Date('2026-10-11T00:00:00');
+
+            // Bepaal welke afbeelding er getoond moet worden afhankelijk van de datum
+            if (today >= switchDate) {
+                promoImg.src = 'CRAFFT.jpg';
+                promoImg.alt = 'SKIPPABEAT Live bij CRAFFT';
+            } else {
+                promoImg.src = 'goudsskaas.jpg';
+                promoImg.alt = 'Gouds SKA Festival - SKIPPABEAT';
+            }
+
+            const hasSeenPromo = sessionStorage.getItem('skippa_promo_seen');
+
+            if (!hasSeenPromo) {
+                const welcomeModal = document.getElementById('welcomePromoModal');
+                welcomeModal.classList.add('active');
+                sessionStorage.setItem('skippa_promo_seen', 'true');
+
+                // Sluit automatisch na 5000 ms (5 seconden)
+                welcomeTimer = setTimeout(() => {
+                    closeWelcomeModal();
+                }, 5000);
+            }
         });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Photo Slider Logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const sliderSlides = document.getElementById('sliderSlides');
-        const sliderDots = document.getElementById('sliderDots');
-        let autoSlideTimer;
-
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            sliderDots.appendChild(dot);
-        });
-
-        const dots = document.querySelectorAll('.dot');
-
-        function updateSlider() {
-            sliderSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function moveSlide(direction) {
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            updateSlider();
-            resetAutoSlide();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-            resetAutoSlide();
-        }
-
-        function startAutoSlide() {
-            autoSlideTimer = setInterval(() => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                updateSlider();
-            }, 4000);
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideTimer);
-            startAutoSlide();
-        }
-
-        startAutoSlide();
 
         // Translations Dictionary
         const translations = {
@@ -1196,6 +1549,9 @@
                 "section-music": "Beluister op Spotify",
                 "section-news": "Nieuws & Updates",
                 "swipe-hint": '<i class="fas fa-arrow-right"></i> Swipe voor oudere berichten',
+                "news-0-date": "Oktober 2026",
+                "news-0-title": "Feest met de nieuwe bezetting!",
+                "news-0-text": "Onze vernieuwde bezetting heeft op 10 oktober een vliegende start gemaakt: het optreden op Gouds Skaas in Gouda werd één groot feest.<br><br>Smaakt dit naar meer? Op 13 november staat de band in CRAFFT Breda, met Skankin' Rebels als voorprogramma. Zorg dat je erbij bent!",
                 "news-1-date": "September 2026",
                 "news-1-title": "Wat een avond! Afscheid Marco & Mark",
                 "news-1-text": "Op 30 augustus speelden we het laatste optreden met Marco en Mark in Café Parkzicht, Breda. De zaal was tot de nok gevuld, de sfeer intens, het feest groots. Samen met jullie hebben we hun jarenlange inzet, energie en muzikaliteit gevierd. Dank aan iedereen die deze bijzondere avond heeft gedeeld!",
@@ -1207,7 +1563,10 @@
                 "news-3-text": "Skippabeat zoekt nieuwe leden! We zijn op zoek naar een ska-gitarist(e), trombonist(e) en trompettist(e). Zin om mee te knallen? Stuur ons een bericht!",
                 "section-agenda": "Live Agenda",
                 "month-oct": "OKT 2026",
+                "month-nov": "NOV 2026",
                 "btn-tickets": "Tickets & Info",
+                "btn-free-info": "Gratis Entree & Info",
+                "no-shows-msg": "Binnenkort meer nieuwe optredens bekend!",
                 "agenda-footer": 'Blijf op de hoogte van nieuwe showbekendmakingen via <a href="https://www.songkick.com/artists/8661379-skippabeat" target="_blank" style="color: var(--accent-yellow);">Songkick</a> en onze socials!',
                 "about-title-prefix": "Over",
                 "bio-p1": "De Bredase skaband <strong>SKIPPABEAT</strong> is uitgegroeid tot een vaste waarde in Breda en ver daarbuiten. Met hun topmuzikanten brengt SKIPPABEAT een energieke en veelzijdige ska-show die iedereen laat bewegen!",
@@ -1256,6 +1615,9 @@
                 "section-music": "Listen on Spotify",
                 "section-news": "News & Updates",
                 "swipe-hint": '<i class="fas fa-arrow-right"></i> Swipe for older posts',
+                "news-0-date": "October 2026",
+                "news-0-title": "Party with the new lineup!",
+                "news-0-text": "Our renewed lineup got off to a flying start on October 10th: the performance at Gouds Skaas in Gouda was one big party.<br><br>Want to hear more? On November 13th, the band plays at CRAFFT Breda with Skankin' Rebels as support act. Be there!",
                 "news-1-date": "September 2026",
                 "news-1-title": "What a night! Farewell Marco & Mark",
                 "news-1-text": "On August 30th we played our final show with Marco and Mark at Café Parkzicht, Breda. The venue was packed to the brim, the atmosphere intense, and the party wild. Together with you, we celebrated their years of dedication, energy, and music. Thank you to everyone who shared this special night with us!",
@@ -1267,7 +1629,10 @@
                 "news-3-text": "Skippabeat is looking for new members! We are searching for a ska guitarist, trombonist, and trumpeter. Ready to blow the roof off? Send us a message!",
                 "section-agenda": "Live Agenda",
                 "month-oct": "OCT 2026",
+                "month-nov": "NOV 2026",
                 "btn-tickets": "Tickets & Info",
+                "btn-free-info": "Free Entry & Info",
+                "no-shows-msg": "More shows announced soon!",
                 "agenda-footer": 'Stay updated on new show announcements via <a href="https://www.songkick.com/artists/8661379-skippabeat" target="_blank" style="color: var(--accent-yellow);">Songkick</a> and our socials!',
                 "about-title-prefix": "About",
                 "bio-p1": "Ska band <strong>SKIPPABEAT</strong> from Breda (NL) has grown into an established household name in Breda and far beyond. With top musicians, SKIPPABEAT delivers an energetic and versatile ska show that gets everyone moving!",
@@ -1316,6 +1681,9 @@
                 "section-music": "Écoutez sur Spotify",
                 "section-news": "Actualités & Mises à jour",
                 "swipe-hint": '<i class="fas fa-arrow-right"></i> Glissez pour les anciens messages',
+                "news-0-date": "Octobre 2026",
+                "news-0-title": "Fête avec la nouvelle formation !",
+                "news-0-text": "Notre nouvelle formation a démarré sur les chapeaux de roue le 10 octobre : notre concert à Gouds Skaas à Gouda a été une vraie fête.<br><br>Vous en voulez encore ? Le 13 novembre, le groupe sera à CRAFFT Breda, avec Skankin' Rebels en première partie. Soyez au rendez-vous !",
                 "news-1-date": "Septembre 2026",
                 "news-1-title": "Quelle soirée ! Adieu Marco & Mark",
                 "news-1-text": "Le 30 août, nous avons joué notre dernier concert avec Marco et Mark au Café Parkzicht à Breda. La salle était comble, l'ambiance intense et la fête incroyable. Merci à tous d'avoir partagé cette soirée spéciale avec nous !",
@@ -1327,7 +1695,10 @@
                 "news-3-text": "Skippabeat recherche de nouveaux membres ! Nous cherchons un(e) guitariste ska, un(e) tromboniste et un(e) trompettiste. Envie de nous rejoindre ? Envoyez-nous un message !",
                 "section-agenda": "Concerts à venir",
                 "month-oct": "OCT 2026",
+                "month-nov": "NOV 2026",
                 "btn-tickets": "Billets & Info",
+                "btn-free-info": "Entrée gratuite & Info",
+                "no-shows-msg": "Nouveaux concerts bientôt annoncés !",
                 "agenda-footer": 'Restez informés des nouveaux concerts via <a href="https://www.songkick.com/artists/8661379-skippabeat" target="_blank" style="color: var(--accent-yellow);">Songkick</a> et nos réseaux sociaux !',
                 "about-title-prefix": "À propos de",
                 "bio-p1": "Le groupe de ska <strong>SKIPPABEAT</strong> (Breda, Pays-Bas) est devenu une référence incontournable. Avec des musiciens de premier ordre, SKIPPABEAT offre un spectacle ska dynamique et varié qui fait bouger tout le monde !",
@@ -1376,6 +1747,9 @@
                 "section-music": "Auf Spotify hören",
                 "section-news": "Neuigkeiten & Updates",
                 "swipe-hint": '<i class="fas fa-arrow-right"></i> Wischen für ältere Beiträge',
+                "news-0-date": "Oktober 2026",
+                "news-0-title": "Party mit der neuen Besetzung!",
+                "news-0-text": "Unsere erneuerte Besetzung hat am 10. Oktober einen Raketenstart hingelegt: Der Auftritt bei Gouds Skaas in Gouda war ein riesiges Fest.<br><br>Lust auf mehr? Am 13. November steht die Band im CRAFFT Breda, mit Skankin' Rebels als Vorband. Sei dabei!",
                 "news-1-date": "September 2026",
                 "news-1-title": "Was für ein Abend! Abschied Marco & Mark",
                 "news-1-text": "Am 30. August spielten wir die letzte Show mit Marco und Mark im Café Parkzicht in Breda. Der Saal war gesteckt voll, die Stimmung intensiv, das Fest riesig. Danke an alle, die diesen besonderen Abend mit uns geteilt haben!",
@@ -1387,12 +1761,15 @@
                 "news-3-text": "Skippabeat sucht neue Mitglieder! Wir suchen eine(n) Ska-Gitarrist(en), Posaunist(en) und Trompeter(in). Lust mitzumachen? Schreib uns eine Nachricht!",
                 "section-agenda": "Live-Termine",
                 "month-oct": "OKT 2026",
+                "month-nov": "NOV 2026",
                 "btn-tickets": "Tickets & Info",
+                "btn-free-info": "Eintritt frei & Info",
+                "no-shows-msg": "Weitere Show-Ankündigungen in Kürze!",
                 "agenda-footer": 'Bleiben Sie über neue Show-Ankündigungen auf <a href="https://www.songkick.com/artists/8661379-skippabeat" target="_blank" style="color: var(--accent-yellow);">Songkick</a> und unseren Socials informiert!',
                 "about-title-prefix": "Über",
                 "bio-p1": "Die Ska-Band <strong>SKIPPABEAT</strong> aus Breda (Niederlande) ist zu einer festen Größe geworden. Mit ihren erstklassigen Musikern liefert SKIPPABEAT eine energiegeladene Ska-Show, die jeden zum Tanzen bringt!",
                 "quote-text": '"Ska mit einem großen S, Punk mit einem Augenzwinkern, ansteckend wie verrückt."',
-                "bio-p2": "Seit 12 Jahren stellt SKIPPABEAT jede Bühne mit mitreißenden Ska-Shows auf den Kopf! Aus der Asche von Manoman entstanden, hat sich die Truppe zu einer gut geölten Ska-Maschine entwickelt, die mitreißenden Ska, rauem Punk und satten Reggae im Eiltempo abliefert.",
+                "bio-p2": "Seit 12 Jahren stellt SKIPPABEAT jede Bühne mit mitreißenden Ska-Shows auf den Kopf! Aus der Asche von Manoman entstanden, hat sich die Truppe zu einer gut geölten Ska-Maschine entwickelt, die mitreißenden Ska, rauem Punk und satten Reggae im Eiltempo ablifert.",
                 "bio-p3": "Kraftvoller Gesang, ein explosiver MC kombiniert mit dicken Samples, eine pumpende Rhythmusgruppe und fett geblasene Bläsersätze sind der Treibstoff für ein energetisches Live-Erlebnis. Stillstehen gibt es nicht; jeder Auftritt wird zu einer ausgelassenen Party.",
                 "bio-p4": "Bewaffnet mit eigenen Tracks und unaufhaltsamer Live-Energie tourt die Band durch Festivals, Clubs und Kneipen. Zieh deine Tanzschuhe an, denn wenn SKIPPABEAT speelt, bebt der Saal!",
                 "lineup-title": "Bandbesetzung",
@@ -1422,6 +1799,209 @@
                 "footer-tagline": "Rocksteady Reggae Punk Whatever Ska aus Breda"
             }
         };
+
+        // Automatic Past Shows Filter
+        function filterPastShows() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const agendaList = document.getElementById('agendaList');
+            if (!agendaList) return;
+            
+            const showItems = agendaList.querySelectorAll('.agenda-item');
+            let visibleShowsCount = 0;
+
+            showItems.forEach(item => {
+                const showDateStr = item.getAttribute('data-date');
+                if (showDateStr) {
+                    const showDate = new Date(showDateStr + 'T23:59:59');
+                    if (showDate < today) {
+                        item.remove();
+                    } else {
+                        visibleShowsCount++;
+                    }
+                }
+            });
+
+            if (visibleShowsCount === 0) {
+                const currentLang = document.documentElement.lang || 'nl';
+                const msgText = translations[currentLang] ? translations[currentLang]['no-shows-msg'] : 'Binnenkort meer nieuwe optredens bekend!';
+                agendaList.innerHTML = `<div class="no-shows-msg" data-i18n="no-shows-msg">${msgText}</div>`;
+            }
+        }
+
+        filterPastShows();
+
+        // Modal / Inlog Logica met Persistentie (localStorage)
+        function checkPersistentLogin() {
+            return localStorage.getItem('skippa_band_logged_in') === 'true';
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+            
+            if (checkPersistentLogin()) {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('datesSection').style.display = 'block';
+            } else {
+                document.getElementById('loginSection').style.display = 'block';
+                document.getElementById('datesSection').style.display = 'none';
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('errorMsg').style.display = 'none';
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('passwordInput').value;
+            const remember = document.getElementById('rememberMe').checked;
+
+            if (inputVal === 'Manoman01!') {
+                if (remember) {
+                    localStorage.setItem('skippa_band_logged_in', 'true');
+                }
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('datesSection').style.display = 'block';
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('skippa_band_logged_in');
+            document.getElementById('datesSection').style.display = 'none';
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('rememberMe').checked = false;
+        }
+
+        // Rider Modal Logica
+        function openRiderModal() {
+            if (localStorage.getItem('skippa_rider_logged_in') === 'true') {
+                window.open(RIDER_URL, '_blank');
+            } else {
+                document.getElementById('riderModal').classList.add('active');
+                document.getElementById('riderPasswordInput').value = '';
+                document.getElementById('riderErrorMsg').style.display = 'none';
+            }
+        }
+
+        function closeRiderModal() {
+            document.getElementById('riderModal').classList.remove('active');
+        }
+
+        function handleRiderLogin(e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('riderPasswordInput').value;
+            const remember = document.getElementById('riderRememberMe').checked;
+
+            if (inputVal === 'beataskip') {
+                if (remember) {
+                    localStorage.setItem('skippa_rider_logged_in', 'true');
+                }
+                closeRiderModal();
+                window.open(RIDER_URL, '_blank');
+            } else {
+                document.getElementById('riderErrorMsg').style.display = 'block';
+            }
+        }
+
+        // Sluit modals bij klikken op achtergrond of ESC-toets
+        window.addEventListener('click', (e) => {
+            const loginModal = document.getElementById('loginModal');
+            const welcomeModal = document.getElementById('welcomePromoModal');
+            const riderModal = document.getElementById('riderModal');
+            
+            if (e.target === loginModal) {
+                closeLoginModal();
+            }
+            if (e.target === welcomeModal) {
+                closeWelcomeModal();
+            }
+            if (e.target === riderModal) {
+                closeRiderModal();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeWelcomeModal();
+                closeLoginModal();
+                closeRiderModal();
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Photo Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const sliderSlides = document.getElementById('sliderSlides');
+        const sliderDots = document.getElementById('sliderDots');
+        let autoSlideTimer;
+
+        if (slides.length > 0 && sliderSlides && sliderDots) {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                sliderDots.appendChild(dot);
+            });
+
+            startAutoSlide();
+        }
+
+        function updateSlider() {
+            if (!sliderSlides) return;
+            sliderSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveSlide(direction) {
+            if (slides.length === 0) return;
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateSlider();
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            if (slides.length === 0) return;
+            currentSlide = index;
+            updateSlider();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            }, 4000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
 
         function setLanguage(lang) {
             document.documentElement.lang = lang;
