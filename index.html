@@ -9,7 +9,7 @@
     <!-- Google Fonts voor Ska / Punk Sfeer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto+Condensed:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto+Condensed:ital,wght@0,400;0,500;0,700;1,700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -589,87 +589,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.8);
         }
 
-        /* Swipable Nieuws Slider Styles */
-        .news-slider-container {
-            position: relative;
-        }
-
-        .news-grid {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 15px;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .news-grid::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .news-grid::-webkit-scrollbar-track {
-            background: #111;
-            border-radius: 3px;
-        }
-
-        .news-grid::-webkit-scrollbar-thumb {
-            background: var(--accent-yellow);
-            border-radius: 3px;
-        }
-
-        .news-card {
-            flex: 0 0 calc(50% - 10px);
-            min-width: 280px;
-            scroll-snap-align: start;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-gray);
-            border-radius: 8px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .news-card:hover {
-            border-color: var(--accent-yellow);
-        }
-
-        .news-date {
-            font-size: 0.85rem;
-            color: var(--accent-yellow);
-            font-weight: bold;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .news-card h3 {
-            font-size: 1.3rem;
-            color: var(--text-white);
-            margin-bottom: 10px;
-        }
-
-        .news-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .swipe-hint {
-            text-align: right;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 6px;
-        }
-
-        .swipe-hint i {
-            color: var(--accent-yellow);
-        }
 
         /* Bio Layout */
         .bio-grid {
@@ -1002,10 +921,6 @@
                 padding-bottom: 75%;
             }
 
-            .news-card {
-                flex: 0 0 85%;
-            }
-
             .bio-grid, .two-column-grid {
                 grid-template-columns: 1fr;
             }
@@ -1057,6 +972,100 @@
                 justify-content: center;
             }
         }
+
+        /* --- Smooth, refined visual polish --- */
+        html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+
+        h1, h2, h3, .section-title, .sidebar-card h3,
+        .contact-box h2, .modal-title {
+            font-family: 'Oswald', 'Roboto Condensed', sans-serif;
+            font-weight: 600;
+            letter-spacing: .035em;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.65rem);
+            line-height: 1.15;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 var(--accent-red);
+            margin-bottom: 26px;
+        }
+
+        nav {
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: background-color .25s ease, border-color .25s ease;
+        }
+
+        .container { padding-top: 52px; }
+        section { margin-bottom: 64px; }
+
+        .socials-section, .sidebar-card, .agenda-item,
+        .video-container, .photo-slider, .spotify-container,
+        .contact-box, .quote-box {
+            transition: transform .35s ease, border-color .35s ease,
+                        box-shadow .35s ease, background-color .35s ease;
+        }
+
+        .social-card { transition: transform .28s ease, background-color .28s ease,
+                       color .28s ease, border-color .28s ease; }
+        .social-card:hover { transform: translateY(-5px) scale(1.04); }
+
+        .sidebar-card:hover, .agenda-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0,0,0,.28);
+        }
+
+        .video-container:hover, .photo-slider:hover, .spotify-container:hover {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 14px 30px rgba(0,0,0,.42);
+        }
+
+        .btn-ticket, .btn-email, .btn-presskit-contact, .nav-login-btn {
+            transition: transform .25s ease, background-color .25s ease,
+                        color .25s ease, box-shadow .25s ease;
+        }
+        .btn-ticket:hover, .btn-email:hover, .btn-presskit-contact:hover,
+        .nav-login-btn:hover { transform: translateY(-2px); }
+
+        .agenda-date { flex-shrink: 0; }
+        .quote-box { border-radius: 0 8px 8px 0; }
+
+        /* Elements enter softly as they become visible while scrolling. */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1.25s ease-in-out, transform 1.25s cubic-bezier(.22,.61,.36,1);
+            will-change: opacity, transform;
+        }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: .18s; }
+        .reveal-delay-2 { transition-delay: .36s; }
+        .reveal-delay-3 { transition-delay: .54s; }
+
+        .banner-img { animation: bannerAppear 1.6s ease-in-out both; }
+        @keyframes bannerAppear {
+            from { opacity: 0; transform: scale(1.015); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding-top: 34px; }
+            section { margin-bottom: 48px; }
+            .section-title { margin-bottom: 20px; }
+            .reveal { transform: translateY(16px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -1108,8 +1117,7 @@
                 <li><a href="#media" data-i18n="nav-media">Media</a></li>
                 <li><a href="#agenda" data-i18n="nav-agenda">Agenda</a></li>
                 <li><a href="#music" data-i18n="nav-music">Muziek</a></li>
-                <li><a href="#news" data-i18n="nav-news">Nieuws</a></li>
-                <li><a href="#about" data-i18n="nav-about">Over de Band</a></li>
+<li><a href="#about" data-i18n="nav-about">Over de Band</a></li>
                 <li><a href="#disco" data-i18n="nav-disco">Discografie</a></li>
                 <li><a href="#shows" data-i18n="nav-shows">Historie</a></li>
                 <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
@@ -1292,49 +1300,6 @@
             </div>
         </section>
 
-        <!-- Swipable Nieuws & Updates Sectie -->
-        <section id="news">
-            <h2 class="section-title" data-i18n="section-news">Nieuws & Updates</h2>
-            <div class="swipe-hint" data-i18n="swipe-hint">
-                <i class="fas fa-arrow-right"></i> Swipe voor oudere berichten
-            </div>
-            <div class="news-slider-container">
-                <div class="news-grid">
-                    <!-- Nieuwst Bericht: Oktober 2026 -->
-                    <div class="news-card">
-                        <div>
-                            <div class="news-date" data-i18n="news-0-date">Oktober 2026</div>
-                            <h3 data-i18n="news-0-title">Feest met de nieuwe bezetting!</h3>
-                            <p data-i18n="news-0-text">Onze vernieuwde bezetting heeft op 10 oktober een vliegende start gemaakt: het optreden op Gouds Skaas in Gouda werd één groot feest.<br><br>Smaakt dit naar meer? Op 13 november staat de band in CRAFFT Breda, met Skankin' Rebels als voorprogramma. Zorg dat je erbij bent!</p>
-                        </div>
-                    </div>
-                    <!-- Bericht 1: September 2026 -->
-                    <div class="news-card">
-                        <div>
-                            <div class="news-date" data-i18n="news-1-date">September 2026</div>
-                            <h3 data-i18n="news-1-title">Wat een avond! Afscheid Marco & Mark</h3>
-                            <p data-i18n="news-1-text">Op 30 augustus speelden we het laatste optreden met Marco en Mark in Café Parkzicht, Breda. De zaal was tot de nok gevuld, de sfeer intens, het feest groots. Samen met jullie hebben we hun jarenlange inzet, energie en muzikaliteit gevierd. Dank aan iedereen die deze bijzondere avond heeft gedeeld!</p>
-                        </div>
-                    </div>
-                    <!-- Bericht 2: Augustus 2026 -->
-                    <div class="news-card">
-                        <div>
-                            <div class="news-date" data-i18n="news-2-date">Augustus 2026</div>
-                            <h3 data-i18n="news-2-title">De band is weer compleet!</h3>
-                            <p data-i18n="news-2-text">Onze oproep voor nieuwe bandleden werd massaal gedeeld en we kregen een enorme hoeveelheid berichten, tips en aanmeldingen. Geweldig dat zoveel mensen met ons meeleven! Dankzij al die support kunnen we met trots zeggen dat Skippabeat weer compleet is. Nieuwe gezichten, nieuwe energie — klaar voor de volgende ronde optredens!</p>
-                        </div>
-                    </div>
-                    <!-- Bericht 3: Juli 2026 -->
-                    <div class="news-card">
-                        <div>
-                            <div class="news-date" data-i18n="news-3-date">Juli 2026</div>
-                            <h3 data-i18n="news-3-title">Nieuwe bandleden gezocht</h3>
-                            <p data-i18n="news-3-text">Skippabeat zoekt nieuwe leden! We zijn op zoek naar een ska-gitarist(e), trombonist(e) en trompettist(e). Zin om mee te knallen? Stuur ons een bericht!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Band Bio & Line-up -->
         <section id="about">
@@ -1458,7 +1423,6 @@
                 "nav-media": "Media",
                 "nav-agenda": "Agenda",
                 "nav-music": "Muziek",
-                "nav-news": "Nieuws",
                 "nav-about": "Over de Band",
                 "nav-disco": "Discografie",
                 "nav-shows": "Historie",
@@ -1466,20 +1430,6 @@
                 "socials-title": "Volg, Beluister & Shop",
                 "section-media": "Video & Foto's",
                 "section-music": "Beluister op Spotify",
-                "section-news": "Nieuws & Updates",
-                "swipe-hint": '<i class="fas fa-arrow-right"></i> Swipe voor oudere berichten',
-                "news-0-date": "Oktober 2026",
-                "news-0-title": "Feest met de nieuwe bezetting!",
-                "news-0-text": "Onze vernieuwde bezetting heeft op 10 oktober een vliegende start gemaakt: het optreden op Gouds Skaas in Gouda werd één groot feest.<br><br>Smaakt dit naar meer? Op 13 november staat de band in CRAFFT Breda, met Skankin' Rebels als voorprogramma. Zorg dat je erbij bent!",
-                "news-1-date": "September 2026",
-                "news-1-title": "Wat een avond! Afscheid Marco & Mark",
-                "news-1-text": "Op 30 augustus speelden we het laatste optreden met Marco en Mark in Café Parkzicht, Breda. De zaal was tot de nok gevuld, de sfeer intens, het feest groots. Samen met jullie hebben we hun jarenlange inzet, energie en muzikaliteit gevierd. Dank aan iedereen die deze bijzondere avond heeft gedeeld!",
-                "news-2-date": "Augustus 2026",
-                "news-2-title": "De band is weer compleet!",
-                "news-2-text": "Onze oproep voor nieuwe bandleden werd massaal gedeeld en we kregen een enorme hoeveelheid berichten, tips en aanmeldingen. Geweldig dat zoveel mensen met ons meeleven! Dankzij al die support kunnen we met trots zeggen dat Skippabeat weer compleet is. Nieuwe gezichten, nieuwe energie — klaar voor de volgende ronde optredens!",
-                "news-3-date": "Juli 2026",
-                "news-3-title": "Nieuwe bandleden gezocht",
-                "news-3-text": "Skippabeat zoekt nieuwe leden! We zijn op zoek naar een ska-gitarist(e), trombonist(e) en trompettist(e). Zin om mee te knallen? Stuur ons een bericht!",
                 "section-agenda": "Live Agenda",
                 "month-oct": "OKT 2026",
                 "month-nov": "NOV 2026",
@@ -1524,7 +1474,6 @@
                 "nav-media": "Media",
                 "nav-agenda": "Tour Dates",
                 "nav-music": "Music",
-                "nav-news": "News",
                 "nav-about": "About the Band",
                 "nav-disco": "Discography",
                 "nav-shows": "History",
@@ -1532,20 +1481,6 @@
                 "socials-title": "Follow, Listen & Shop",
                 "section-media": "Video & Photos",
                 "section-music": "Listen on Spotify",
-                "section-news": "News & Updates",
-                "swipe-hint": '<i class="fas fa-arrow-right"></i> Swipe for older posts',
-                "news-0-date": "October 2026",
-                "news-0-title": "Party with the new lineup!",
-                "news-0-text": "Our renewed lineup got off to a flying start on October 10th: the performance at Gouds Skaas in Gouda was one big party.<br><br>Want to hear more? On November 13th, the band plays at CRAFFT Breda with Skankin' Rebels as support act. Be there!",
-                "news-1-date": "September 2026",
-                "news-1-title": "What a night! Farewell Marco & Mark",
-                "news-1-text": "On August 30th we played our final show with Marco and Mark at Café Parkzicht, Breda. The venue was packed to the brim, the atmosphere intense, and the party wild. Together with you, we celebrated their years of dedication, energy, and music. Thank you to everyone who shared this special night with us!",
-                "news-2-date": "August 2026",
-                "news-2-title": "The band is complete again!",
-                "news-2-text": "Our call for new band members was shared massively, resulting in a huge wave of messages, leads, and applications. Awesome to see so many people care about Skippabeat! Thanks to all that support, we can proudly say Skippabeat is fully complete again. New faces, new energy — ready for the next round of shows!",
-                "news-3-date": "July 2026",
-                "news-3-title": "New band members wanted",
-                "news-3-text": "Skippabeat is looking for new members! We are searching for a ska guitarist, trombonist, and trumpeter. Ready to blow the roof off? Send us a message!",
                 "section-agenda": "Live Agenda",
                 "month-oct": "OCT 2026",
                 "month-nov": "NOV 2026",
@@ -1590,7 +1525,6 @@
                 "nav-media": "Média",
                 "nav-agenda": "Concerts",
                 "nav-music": "Musique",
-                "nav-news": "Actualités",
                 "nav-about": "Le Groupe",
                 "nav-disco": "Discographie",
                 "nav-shows": "Historique",
@@ -1598,20 +1532,6 @@
                 "socials-title": "Suivez, Écoutez & Achetez",
                 "section-media": "Vidéo & Photos",
                 "section-music": "Écoutez sur Spotify",
-                "section-news": "Actualités & Mises à jour",
-                "swipe-hint": '<i class="fas fa-arrow-right"></i> Glissez pour les anciens messages',
-                "news-0-date": "Octobre 2026",
-                "news-0-title": "Fête avec la nouvelle formation !",
-                "news-0-text": "Notre nouvelle formation a démarré sur les chapeaux de roue le 10 octobre : notre concert à Gouds Skaas à Gouda a été une vraie fête.<br><br>Vous en voulez encore ? Le 13 novembre, le groupe sera à CRAFFT Breda, avec Skankin' Rebels en première partie. Soyez au rendez-vous !",
-                "news-1-date": "Septembre 2026",
-                "news-1-title": "Quelle soirée ! Adieu Marco & Mark",
-                "news-1-text": "Le 30 août, nous avons joué notre dernier concert avec Marco et Mark au Café Parkzicht à Breda. La salle était comble, l'ambiance intense et la fête incroyable. Merci à tous d'avoir partagé cette soirée spéciale avec nous !",
-                "news-2-date": "Août 2026",
-                "news-2-title": "Le groupe est de nouveau au complet !",
-                "news-2-text": "Notre appel pour trouver de nouveaux membres a été largement partagé. Grâce à tout ce soutien, nous sommes fiers d'annoncer que Skippabeat est à nouveau au complet. Nouveaux visages, nouvelle énergie — prêts pour la suite !",
-                "news-3-date": "Juillet 2026",
-                "news-3-title": "Recherche de nouveaux musiciens",
-                "news-3-text": "Skippabeat recherche de nouveaux membres ! Nous cherchons un(e) guitariste ska, un(e) tromboniste et un(e) trompettiste. Envie de nous rejoindre ? Envoyez-nous un message !",
                 "section-agenda": "Concerts à venir",
                 "month-oct": "OCT 2026",
                 "month-nov": "NOV 2026",
@@ -1656,7 +1576,6 @@
                 "nav-media": "Medien",
                 "nav-agenda": "Termine",
                 "nav-music": "Musik",
-                "nav-news": "Neuigkeiten",
                 "nav-about": "Über die Band",
                 "nav-disco": "Diskografie",
                 "nav-shows": "Historie",
@@ -1664,20 +1583,6 @@
                 "socials-title": "Folgen, Hören & Shoppen",
                 "section-media": "Video & Fotos",
                 "section-music": "Auf Spotify hören",
-                "section-news": "Neuigkeiten & Updates",
-                "swipe-hint": '<i class="fas fa-arrow-right"></i> Wischen für ältere Beiträge',
-                "news-0-date": "Oktober 2026",
-                "news-0-title": "Party mit der neuen Besetzung!",
-                "news-0-text": "Unsere erneuerte Besetzung hat am 10. Oktober einen Raketenstart hingelegt: Der Auftritt bei Gouds Skaas in Gouda war ein riesiges Fest.<br><br>Lust auf mehr? Am 13. November steht die Band im CRAFFT Breda, mit Skankin' Rebels als Vorband. Sei dabei!",
-                "news-1-date": "September 2026",
-                "news-1-title": "Was für ein Abend! Abschied Marco & Mark",
-                "news-1-text": "Am 30. August spielten wir die letzte Show mit Marco und Mark im Café Parkzicht in Breda. Der Saal war gesteckt voll, die Stimmung intensiv, das Fest riesig. Danke an alle, die diesen besonderen Abend mit uns geteilt haben!",
-                "news-2-date": "August 2026",
-                "news-2-title": "Die Band ist wieder komplett!",
-                "news-2-text": "Unser Aufruf nach neuen Bandmitgliedern wurde riesig geteilt. Dank all der Unterstützung können wir stolz verkünden: Skippabeat ist wieder komplett. Neue Gesichter, neue Energie — bereit für die nächsten Shows!",
-                "news-3-date": "Juli 2026",
-                "news-3-title": "Neue Bandmitglieder gesucht",
-                "news-3-text": "Skippabeat sucht neue Mitglieder! Wir suchen eine(n) Ska-Gitarrist(en), Posaunist(en) und Trompeter(in). Lust mitzumachen? Schreib uns eine Nachricht!",
                 "section-agenda": "Live-Termine",
                 "month-oct": "OKT 2026",
                 "month-nov": "NOV 2026",
@@ -1933,5 +1838,38 @@
             });
         }
     </script>
+
+    <script>
+        // Scroll reveal: progressive enhancement; content remains visible without JS.
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealTargets = document.querySelectorAll(
+                '.socials-section, #media, #agenda, #music, #about, #disco, #shows, .merch-image-section, #contact'
+            );
+
+            revealTargets.forEach((element, index) => {
+                element.classList.add('reveal');
+                if (index % 4 === 1) element.classList.add('reveal-delay-1');
+                if (index % 4 === 2) element.classList.add('reveal-delay-2');
+                if (index % 4 === 3) element.classList.add('reveal-delay-3');
+            });
+
+            if (!('IntersectionObserver' in window)) {
+                revealTargets.forEach(element => element.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+
+            revealTargets.forEach(element => observer.observe(element));
+        });
+    </script>
+
 </body>
 </html>
